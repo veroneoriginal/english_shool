@@ -2,4 +2,4 @@ runserver:
 	python manage.py runserver
 
 newapp:
-	python manage.py startapp mainapp
+	python manage.py startapp userapp
