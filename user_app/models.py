@@ -1,33 +1,17 @@
+from django.core.validators import EmailValidator
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
-class Teachers(models.Model):
-    """Модель преподавателя"""
-    name = models.CharField(max_length=100, unique=True)
+class User(AbstractUser):
+    # класс от которого наследуемся имеет username, first_name, last_name, email, password
 
-    def __str__(self):
-        return f'{self.name}'
+    username = models.CharField(unique=False, null=False)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    email = models.EmailField(unique=True)
 
-
-class Students(models.Model):
-    """Модель студента"""
-    name = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return f'{self.name}'
-
-
-class Course(models.Model):
-    """Модель курса"""
-    name = models.CharField(max_length=100, unique=True)
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     def __str__(self):
-        return f'{self.name}'
-
-
-class Schedule(models.Model):
-    """Модель расписания"""
-    name = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return f'{self.name}'
+        return self.username

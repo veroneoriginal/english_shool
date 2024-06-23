@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  pg:
+    image: postgres:15
+    env_file:
+      - .env
+    container_name: language_school
+    ports:
+      - "15432:5432"
