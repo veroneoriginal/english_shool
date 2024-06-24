@@ -13,6 +13,9 @@ class Command(BaseCommand):
         print('Удаляю всех пользователей, кроме админа ...')
         User.objects.filter(is_superuser=False).delete()
 
+        print('Delete old roles ...')
+        Role.objects.all().delete()
+
         print('Create roles ...')
         roles = ['registered', 'student', 'teacher']
         role_objects = {}
