@@ -1,4 +1,4 @@
-runserver:
+run:
 	python manage.py runserver
 
 newapp:
@@ -12,3 +12,6 @@ makemigrations:
 
 migrate:
 	python manage.py migrate
+
+createsuperuser:
+	python manage.py createsuperuser
