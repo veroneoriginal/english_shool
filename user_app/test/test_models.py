@@ -52,7 +52,7 @@ class UserTestCase(TestCase):
         но с уникальным email, и что ему правильно назначается роль student."""
         newuser = User.objects.create(
             username=username,
-            email='email@.ru',
+            email='email@example.ru',
             password=password,
             first_name=first_name,
             last_name=last_name,
@@ -65,14 +65,14 @@ class UserTestCase(TestCase):
         # Это создаёт связь между пользователем и ролью в таблице связи Many-to-Many.
         newuser.role.add(self.role_student)
         # Проверка соответствия email
-        self.assertEqual(newuser.email, 'email@.ru')
+        self.assertEqual(newuser.email, 'email@example.ru')
         # Проверяет, что роль студента находится в списке ролей, связанных с newuser
         self.assertIn(self.role_student, newuser.role.all())
 
     def test_unique_email(self):
         """Исключение IntegrityError возбуждается, если пытаются создать пользователя
         с уже существующим в бд значением email."""
-        with self.assertRaises(IntegrityError):
+        with self.assertRaises(ValidationError):
             User.objects.create(
                 username='another_username',
                 email=email,
@@ -85,17 +85,16 @@ class UserTestCase(TestCase):
     def test_fail_email(self):
         """Исключение ValidationError возбуждается, если
         email пользователя является недействительным (не соот.формату email)."""
-        user = User.objects.create(
-            username=username,
-            email='invalid-email',
-            password=password,
-            first_name=first_name,
-            last_name=last_name,
-            phone_number=phone_number,
-        )
         with self.assertRaises(ValidationError):
-            user.full_clean()
-            user.save()
+            User.objects.create(
+                username=username,
+                email='invalid-email',
+                password=password,
+                first_name=first_name,
+                last_name=last_name,
+                phone_number=phone_number,
+            )
+
 
     def test_multiple_roles(self):
         """Проверяет, что пользователь может иметь несколько ролей одновременно

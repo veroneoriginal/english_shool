@@ -20,7 +20,7 @@ class Command(BaseCommand):
         roles = ['registered', 'student', 'teacher']
         role_objects = {}
         for role in roles:
-            role_objects[role], created = Role.objects.get_or_create(name=role)
+            role_objects[role], created = Role.objects.create(name=role)
 
         print('Create users ... ')
         for people in range(count_people_for_db):
