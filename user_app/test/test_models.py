@@ -1,7 +1,7 @@
-from django.db import IntegrityError
 from django.test import TestCase
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from user_app.models import User, Role
+from user_app.errors import CreateRoleExeption
 
 username = "Tom2024"
 email = "test@test.ru"
@@ -13,9 +13,9 @@ phone_number = "1234567890"
 
 class UserTestCase(TestCase):
     def setUp(self):
-        self.role_registered = Role.objects.create(name='registered')
-        self.role_student = Role.objects.create(name='student')
-        self.role_teacher = Role.objects.create(name='teacher')
+        self.role_registered = Role.objects.create(name=Role.REGISTRATION)
+        self.role_student = Role.objects.create(name=Role.STUDENT)
+        self.role_teacher = Role.objects.create(name=Role.TEACHER)
 
         self.user = User.objects.create(
             username=username,
@@ -104,16 +104,13 @@ class UserTestCase(TestCase):
         # Проверяет, что роль находится в списке всех ролей пользователя
         self.assertIn(self.role_registered, self.user.role.all())
         self.assertIn(self.role_student, self.user.role.all())
-
-    def test_create_valid_role(self):
-        """Проверяет создание ролей с допустимыми значениями."""
-        valid_roles = ['registered', 'student', 'teacher']
-        for role in valid_roles:
-            role_instance = Role.objects.get(name=role)
-            self.assertEqual(role_instance.name, role)
+        self.assertEqual(self.user.role.count(), 2)
 
     def test_create_invalid_role(self):
         """Проверяет, что создание роли с недопустимым значением вызывает исключение"""
-        role_instance = Role(name='invalid_role')
-        with self.assertRaises(ValidationError):
-            role_instance.full_clean()
+
+        with self.assertRaises(CreateRoleExeption):
+            Role.objects.create(name='invalid_role')
+
+        with self.assertRaises(ObjectDoesNotExist):
+            Role.objects.get(name='invalid_role')

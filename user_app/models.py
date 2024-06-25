@@ -1,14 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from user_app.errors import CreateRoleExeption
 
 
 class Role(models.Model):
+    REGISTRATION = 'Зарегистрированный'
+    STUDENT = 'Студент'
+    TEACHER = 'Преподаватель'
+
     ROLE_CHOICES = [
-        ('registered', 'Registered'),
-        ('student', 'Student'),
-        ('teacher', 'Teacher'),
+        (REGISTRATION, 'Registered'),
+        (STUDENT, 'Student'),
+        (TEACHER, 'Teacher'),
     ]
-    name = models.CharField(max_length=50, unique=True, choices=ROLE_CHOICES)
+    name = models.CharField(max_length=50, unique=True, choices=ROLE_CHOICES, default=REGISTRATION)
+    allow_roles = [REGISTRATION, STUDENT, TEACHER]
+
+    def save(self, *args, **kwargs):
+        if self.name not in self.allow_roles:
+            raise CreateRoleExeption(f'Невозможно создать роль "{self.name}"')
+        super(Role, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

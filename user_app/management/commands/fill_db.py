@@ -17,10 +17,9 @@ class Command(BaseCommand):
         Role.objects.all().delete()
 
         print('Create roles ...')
-        roles = ['registered', 'student', 'teacher']
-        role_objects = {}
-        for role in roles:
-            role_objects[role] = Role.objects.create(name=role)
+        role_registration = Role.objects.create(name=Role.REGISTRATION)
+        role_student = Role.objects.create(name=Role.STUDENT)
+        role_teacher = Role.objects.create(name=Role.TEACHER)
 
         print('Create users ... ')
         for people in range(count_people_for_db):
@@ -37,11 +36,11 @@ class Command(BaseCommand):
 
             # Назначение ролей пользователям
             if people <= 3:
-                user.role.add(role_objects['teacher'])
+                user.role.add(role_teacher)
             elif 3 < people <= 13:
-                user.role.add(role_objects['student'])
+                user.role.add(role_student)
             else:
-                user.role.add(role_objects['registered'])
+                user.role.add(role_registration)
             user.save()
 
         self.stdout.write(self.style.SUCCESS('База данных успешно заполнена пользователями и ролями'))
