@@ -95,7 +95,6 @@ class UserTestCase(TestCase):
                 phone_number=phone_number,
             )
 
-
     def test_multiple_roles(self):
         """Проверяет, что пользователь может иметь несколько ролей одновременно
         и что роли правильно добавляются к пользователю."""
@@ -105,3 +104,16 @@ class UserTestCase(TestCase):
         # Проверяет, что роль находится в списке всех ролей пользователя
         self.assertIn(self.role_registered, self.user.role.all())
         self.assertIn(self.role_student, self.user.role.all())
+
+    def test_create_valid_role(self):
+        """Проверяет создание ролей с допустимыми значениями."""
+        valid_roles = ['registered', 'student', 'teacher']
+        for role in valid_roles:
+            role_instance = Role.objects.get(name=role)
+            self.assertEqual(role_instance.name, role)
+
+    def test_create_invalid_role(self):
+        """Проверяет, что создание роли с недопустимым значением вызывает исключение"""
+        role_instance = Role(name='invalid_role')
+        with self.assertRaises(ValidationError):
+            role_instance.full_clean()

@@ -20,7 +20,7 @@ class Command(BaseCommand):
         roles = ['registered', 'student', 'teacher']
         role_objects = {}
         for role in roles:
-            role_objects[role], created = Role.objects.create(name=role)
+            role_objects[role] = Role.objects.create(name=role)
 
         print('Create users ... ')
         for people in range(count_people_for_db):
@@ -36,11 +36,11 @@ class Command(BaseCommand):
             )
 
             # Назначение ролей пользователям
-            if people < 3:
+            if people <= 3:
                 user.role.add(role_objects['teacher'])
-            if people < 13:
+            elif 3 < people <= 13:
                 user.role.add(role_objects['student'])
-            if people >= 13:
+            else:
                 user.role.add(role_objects['registered'])
             user.save()
 
