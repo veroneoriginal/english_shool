@@ -18,13 +18,11 @@ class Command(BaseCommand):
             start_date = date.today() + timedelta(days=random.randint(1, 30))
             end_date = start_date + timedelta(days=random.randint(30, 90))
 
-            course = Course.objects.create(
+            Course.objects.create(
                 name=course_name,
                 description=description,
                 start_date=start_date,
                 end_date=end_date
             )
-
-            course.save()
 
         self.stdout.write(self.style.SUCCESS('Курсы успешно созданы'))

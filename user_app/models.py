@@ -35,7 +35,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
     def save(self, *args, **kwargs):
-        self.full_clean()
+        # self.full_clean()
         super(User, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -53,6 +53,8 @@ class Course(models.Model):
 
     start_date = models.DateField()
     end_date = models.DateField()
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.name
