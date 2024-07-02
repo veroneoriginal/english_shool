@@ -18,3 +18,4 @@ createsuperuser:
 
 fill_db:
 	python manage.py fill_db
+	python manage.py fill_courses

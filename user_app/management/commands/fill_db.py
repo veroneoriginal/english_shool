@@ -4,7 +4,7 @@ from user_app.models import User, Role
 
 
 class Command(BaseCommand):
-    help = 'Fill db with data'
+    help = 'Fill db with data - teachers and students'
 
     def handle(self, *args, **options):
         fake = Faker('ru-ru')
@@ -44,4 +44,3 @@ class Command(BaseCommand):
             user.save()
 
         self.stdout.write(self.style.SUCCESS('База данных успешно заполнена пользователями и ролями'))
-
