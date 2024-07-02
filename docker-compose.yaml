@@ -7,4 +7,4 @@ services:
       - .env
     container_name: language_school
     ports:
-      - "15432:5432"
+      - "5432:5432"
