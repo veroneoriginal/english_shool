@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from user_app.models import User, Course
+from main_app.models import Course
 from datetime import date, timedelta
 import random
 

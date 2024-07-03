@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from user_app.errors import CreateRoleExeption
+from main_app.errors import CreateRoleExeption
 
 
 class Role(models.Model):

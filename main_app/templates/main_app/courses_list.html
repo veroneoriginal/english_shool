@@ -20,10 +20,10 @@ Courses
                         <small class="text-muted">Окончание: {{ course.end_date }}</small>
                     </p>
                     <div class="mt-auto">
-                        <a href="{% url 'user_app:courses_detail' pk=course.pk %}" class="btn btn-primary">Подробнее</a>
-                        <a href="{% url 'user_app:courses_update' pk=course.pk %}"
+                        <a href="{% url 'main_app:courses_detail' pk=course.pk %}" class="btn btn-primary">Подробнее</a>
+                        <a href="{% url 'main_app:courses_update' pk=course.pk %}"
                            class="btn btn-dark">Редактировать</a>
-                        <a href="{% url 'user_app:courses_delete' pk=course.pk %}"
+                        <a href="{% url 'main_app:courses_delete' pk=course.pk %}"
                            class="btn btn-danger">Удалить</a>
 
                     </div>
@@ -33,7 +33,7 @@ Courses
         {% endfor %}
     </div>
     <p>
-        <a class="btn btn-success" href="{% url 'user_app:courses_create' %}">Создать новый курс</a>
+        <a class="btn btn-success" href="{% url 'main_app:courses_create' %}">Создать новый курс</a>
     </p>
 </div>
 {% endblock %}
