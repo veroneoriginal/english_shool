@@ -3,6 +3,7 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
 from django.urls import reverse_lazy
 from user_app.models import Course
@@ -20,6 +21,7 @@ class CoursesListView(ListView):
     model = Course
     template_name = 'user_app/courses_list.html'
     context_object_name = 'courses'
+    ordering = ['pk']
 
 
 class CoursesDetailView(DetailView):
@@ -33,6 +35,13 @@ class CoursesDetailView(DetailView):
 class CoursesCreateView(CreateView):
     """Представление страницы для создания нового курса"""
 
+    model = Course
+    fields = "__all__"
+    success_url = reverse_lazy('user_app:courses_list')
+
+
+class CoursesUpdateView(UpdateView):
+    """Представление страницы для обновления информации в карточке курса"""
     model = Course
     fields = "__all__"
     success_url = reverse_lazy('user_app:courses_list')
