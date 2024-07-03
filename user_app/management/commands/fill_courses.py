@@ -10,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         print('Создаю курсы ...')
-        course_names = ['Русский', 'Английский', 'Французский', 'Испанский', 'Португальский']
+        course_names = ['Русский', 'Английский', 'Французский', 'Испанский', 'Португальский', 'Китайский']
         random.shuffle(course_names)  # Перемешивание списка курсов для случайного порядка
 
         for course_name in course_names:

@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView, ListView, DetailView
-
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.urls import reverse_lazy
 from user_app.models import Course
 
 
@@ -23,3 +23,11 @@ class CoursesDetailView(DetailView):
     model = Course
     template_name = 'user_app/courses_detail.html'
     context_object_name = 'course'
+
+
+class CoursesCreateView(CreateView):
+    """Представление страницы для создания нового курса"""
+
+    model = Course
+    fields = "__all__"
+    success_url = reverse_lazy('user_app:courses_list')
