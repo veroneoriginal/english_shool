@@ -42,6 +42,7 @@ class CoursesCreateView(CreateView):
 
 class CoursesUpdateView(UpdateView):
     """Представление страницы для обновления информации в карточке курса"""
+
     model = Course
     fields = "__all__"
     success_url = reverse_lazy('user_app:courses_list')
