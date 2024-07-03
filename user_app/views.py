@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from user_app.models import Course
 
@@ -13,3 +13,10 @@ class CoursesListView(ListView):
     model = Course
     template_name = 'user_app/courses_list.html'
     context_object_name = 'courses'
+
+
+class CoursesDetailView(DetailView):
+    """Страница просмотра каждого курса"""
+    model = Course
+    template_name = 'user_app/courses_detail.html'
+    context_object_name = 'course'
