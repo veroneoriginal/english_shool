@@ -23,6 +23,8 @@ Courses
                         <a href="{% url 'user_app:courses_detail' pk=course.pk %}" class="btn btn-primary">Подробнее</a>
                         <a href="{% url 'user_app:courses_update' pk=course.pk %}"
                            class="btn btn-dark">Редактировать</a>
+                        <a href="{% url 'user_app:courses_delete' pk=course.pk %}"
+                           class="btn btn-danger">Удалить</a>
 
                     </div>
                 </div>
@@ -31,7 +33,7 @@ Courses
         {% endfor %}
     </div>
     <p>
-        <a class="btn btn-danger" href="{% url 'user_app:courses_create' %}">Создать новый курс</a>
+        <a class="btn btn-success" href="{% url 'user_app:courses_create' %}">Создать новый курс</a>
     </p>
 </div>
 {% endblock %}

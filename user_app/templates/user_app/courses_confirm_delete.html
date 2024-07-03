@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+    {{course.name}}
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{course.name}}
+                    </h5>
+                    <p class="card-text text-danger">Вы действительно хотите удалить?</p>
+                    <form method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn-outline-light">Да</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
