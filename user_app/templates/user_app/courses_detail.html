@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-Courses
+{{course.name}}
 {% endblock %}
 
 {% block body %}
@@ -9,25 +9,20 @@ Courses
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-        {% for course in courses %}
         <div class="col-lg-3">
             <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{% url 'user_app:courses_detail' pk=course.pk %}">
-                            {{course.name}}</a>
+                        {{course.name}}
                     </h5>
-                    <p class="card-text">{{ course.description }}</p>
-                    <p class="card-text">
-                        <small class="text-muted">Начало: {{ course.start_date }}</small><br>
-                        <small class="text-muted">Окончание: {{ course.end_date }}</small>
-                    </p>
+                    <p>{{ course.description }}</p>
+                    <p><strong>Начало:</strong> {{ course.start_date }}</p>
+                    <p><strong>Окончание:</strong> {{ course.end_date }}</p>
                     <a href="#" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}
