@@ -1,6 +1,5 @@
 from django.urls import reverse_lazy
 from django.views.generic import (
-    TemplateView,
     ListView,
     DetailView,
     CreateView,
@@ -9,12 +8,6 @@ from django.views.generic import (
 )
 
 from course_app.models import Course
-
-
-class IndexView(TemplateView):
-    """Представление главной страницы"""
-
-    template_name = 'course_app/index.html'
 
 
 class CoursesListView(ListView):
