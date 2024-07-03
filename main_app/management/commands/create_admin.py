@@ -1,5 +1,5 @@
 from django.core.management import BaseCommand
-from main_app.models import User
+from user_app.models import User
 
 
 class Command(BaseCommand):
@@ -7,13 +7,17 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        user_admin, created = User.objects.get_or_create(username='admin', defaults={
-            'email': 'admin123@admin.ru',
-            'is_superuser': True,
-            'is_staff': True,
-        })
+        user_admin = User.objects.filter(username='admin', email='admin123@admin.ru').exists()
 
-        if created:
+        if not user_admin:
+
+            user_admin = User(
+                username='admin',
+                email='admin123@admin.ru',
+                is_superuser=True,
+                is_staff=True,
+            )
+
             user_admin.set_password('123')
             user_admin.save()
             self.stdout.write(self.style.SUCCESS('Superuser created!'))

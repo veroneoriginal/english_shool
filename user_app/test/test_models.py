@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
-from main_app.models import User, Role
-from main_app.errors import CreateRoleExeption
+from user_app.models import User, Role
+from user_app.errors import CreateRoleExeption
 
 username = "Tom2024"
 email = "test@test.ru"
