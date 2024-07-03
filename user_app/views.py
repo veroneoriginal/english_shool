@@ -1,4 +1,9 @@
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    DetailView,
+    CreateView,
+)
 from django.urls import reverse_lazy
 from user_app.models import Course
 
