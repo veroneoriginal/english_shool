@@ -21,6 +21,9 @@ Courses
                     </p>
                     <div class="mt-auto">
                         <a href="{% url 'user_app:courses_detail' pk=course.pk %}" class="btn btn-primary">Подробнее</a>
+                        <a href="{% url 'user_app:courses_update' pk=course.pk %}"
+                           class="btn btn-dark">Редактировать</a>
+
                     </div>
                 </div>
             </div>
