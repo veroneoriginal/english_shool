@@ -20,5 +20,12 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        # print('MESSAGE', data['message'])
+        print(data)
+        print('MESSAGE', data['message'])
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        data = form.cleaned_data
+        print(data)
+        print('NOT VALID', data['message'])
+        return super().form_invalid(form)
