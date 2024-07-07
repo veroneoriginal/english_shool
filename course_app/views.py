@@ -8,6 +8,7 @@ from django.views.generic import (
 )
 
 from course_app.models import Course
+from course_app.forms import CourseForm
 
 
 class CoursesListView(ListView):
@@ -31,7 +32,7 @@ class CoursesCreateView(CreateView):
     """Представление страницы для создания нового курса"""
 
     model = Course
-    fields = "__all__"
+    form_class = CourseForm
     success_url = reverse_lazy('course_app:courses_list')
 
 
@@ -39,7 +40,7 @@ class CoursesUpdateView(UpdateView):
     """Представление страницы для обновления информации в моделе курса"""
 
     model = Course
-    fields = "__all__"
+    form_class = CourseForm
     success_url = reverse_lazy('course_app:courses_list')
 
 
