@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}
+Teachers
+{% endblock %}
+
+{% block body %}
+
+
+<div class="text-lg-center">
+    <p></p>
+    <h3 class="text-body-emphasis">Teachers</h3>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+        You need to fill out a form to become our teacher
+    </p>
+</div>
+
+
+<div class="container" style="margin-top: 20px;">
+    <!-- Example row of columns -->
+    <div class="row">
+        {% for user in users %}
+        <div class="col-lg-3 d-flex align-items-stretch mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><a>{{ user.name }}</a></h5>
+                    <p class="card-text">{{ user.phone_number }}</p>
+                    <p class="card-text">{{ user.email }}</p>
+                    <p class="card-text">{{ user.role }}</p>
+                    <div class="mt-auto">
+                        <a href="{% url 'user_app:teachers_detail' pk=user.pk %}"
+                           class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <p>
+     <a class="btn btn-success" href="#">Become a teacher</a>
+    </p>
+</div>
+{% endblock %}

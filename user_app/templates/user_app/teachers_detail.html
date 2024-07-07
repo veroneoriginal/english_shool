@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+{{users.name}}
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container" style="margin-top: 20px;">
+    <p></p>
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{users.username}}
+                    </h5>
+                    <p>{{ users.phone_number }}</p>
+                    <p>{{ users.email }}</p>
+                    <p>{{ users.role }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
