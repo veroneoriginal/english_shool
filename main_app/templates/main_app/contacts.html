@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+   Contact
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="text-lg-center">
+    <p></p>
+    <h3 class="text-body-emphasis">Our contacts</h3>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+        You can right or call to us
+    </p>
+</div>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
+{% endblock %}
