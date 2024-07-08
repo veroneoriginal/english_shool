@@ -70,9 +70,7 @@ class TeachersForm(forms.ModelForm):
     def save(self, commit=True):
         # Вызов родительского метода save с параметром commit=False создает объект User, но не сохраняет его в базе данных.
         # Это позволяет нам выполнить дополнительные действия с объектом перед его сохранением.
-        user = super().save(commit=False)
-        if commit:
-            user.save()
-            teacher_role = Role.objects.get(name=Role.TEACHER)
-            user.role.add(teacher_role)
+        user = super().save()
+        teacher_role = Role.objects.get(name=Role.TEACHER)
+        user.role.add(teacher_role)
         return user

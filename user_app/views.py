@@ -4,8 +4,8 @@ from django.views.generic import (
     CreateView,
     DetailView
 )
-from .models import User, Role
-from .forms import TeachersForm
+from user_app.models import User, Role
+from user_app.forms import TeachersForm
 
 
 class TeachersListView(ListView):
@@ -17,7 +17,7 @@ class TeachersListView(ListView):
     ordering = ['pk']
 
     def get_queryset(self):
-        """Переопределяю метод для получения набора запросов"""
+        """Переопределяю метод для получения кверисет"""
 
         role_teacher = Role.objects.get(name=Role.TEACHER)
         return User.objects.filter(role=role_teacher)
