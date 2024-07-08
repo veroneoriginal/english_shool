@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+Card of user
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container" style="margin-top: 20px;">
+    <p></p>
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ users.username }} </h5>
+                    <p>{{ users.phone_number }}</p>
+                    <p>{{ users.email }}</p>
+                    <p class="card-text">
+                        {% for role in users.role.all %}
+                        {{ role.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+    <hr>
+    <a class="btn btn-success" href="{% url 'user_app:teachers_list' %}">To the list of teachers</a>
+    </p>
+</div>
+{% endblock %}
