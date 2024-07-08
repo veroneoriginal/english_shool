@@ -22,10 +22,14 @@ Teachers
         <div class="col-lg-3 d-flex align-items-stretch mb-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title"><a>{{ user.name }}</a></h5>
+                    <h5 class="card-title">{{ user.username }}</h5>
                     <p class="card-text">{{ user.phone_number }}</p>
                     <p class="card-text">{{ user.email }}</p>
-                    <p class="card-text">{{ user.role }}</p>
+                    <p class="card-text">
+                        {% for role in user.role.all %}
+                        {{ role.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
                     <div class="mt-auto">
                         <a href="{% url 'user_app:teachers_detail' pk=user.pk %}"
                            class="btn btn-primary">Подробнее</a>
@@ -36,7 +40,7 @@ Teachers
         {% endfor %}
     </div>
     <p>
-     <a class="btn btn-success" href="#">Become a teacher</a>
+        <a class="btn btn-success" href="{% url 'user_app:teachers_create' %}">Become a teacher</a>
     </p>
 </div>
 {% endblock %}

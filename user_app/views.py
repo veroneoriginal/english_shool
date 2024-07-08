@@ -4,8 +4,8 @@ from django.views.generic import (
     CreateView,
     DetailView
 )
-from .models import User
-from .forms import UserForm
+from .models import User, Role
+from .forms import TeachersForm
 
 
 class TeachersListView(ListView):
@@ -15,6 +15,12 @@ class TeachersListView(ListView):
     template_name = 'user_app/teachers_list.html'
     context_object_name = 'users'
     ordering = ['pk']
+
+    def get_queryset(self):
+        """Переопределяю метод для получения набора запросов"""
+
+        role_teacher = Role.objects.get(name=Role.TEACHER)
+        return User.objects.filter(role=role_teacher)
 
 
 class TeachersDetailView(DetailView):
@@ -29,5 +35,6 @@ class TeachersCreateView(CreateView):
     """Представление страницы для внесения нового преподавателя"""
 
     model = User
-    form_class = UserForm
+    form_class = TeachersForm
+    template_name = 'user_app/teachers_form.html'
     success_url = reverse_lazy('user_app:teachers_list')
