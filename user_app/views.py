@@ -20,7 +20,8 @@ class TeachersListView(ListView):
         """Переопределяю метод для получения кверисет"""
 
         role_teacher = Role.objects.get(name=Role.TEACHER)
-        return User.objects.filter(role=role_teacher)
+        return User.objects.filter(role=role_teacher).prefetch_related('role')
+        # return User.objects.filter(role=role_teacher)
 
 
 class TeachersDetailView(DetailView):
