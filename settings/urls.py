@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('main_app.urls')),
     path('', include('course_app.urls')),
     path('', include('user_app.urls')),
+    path('__debug__/', include("debug_toolbar.urls"))
 
 ]
