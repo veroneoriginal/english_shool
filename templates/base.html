@@ -20,42 +20,50 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'main_app:index' %}">Home
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'course_app:courses_list' %}">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_app:teachers_list' %}">Teachers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'main_app:contacts' %}">Contacts</a>
-                </li>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main_app:index' %}">Home
+                    <span class="visually-hidden">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'course_app:courses_list' %}">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user_app:teachers_list' %}">Teachers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main_app:contacts' %}">Contacts</a>
+            </li>
+        </ul>
 
 
-                {% if user.is_authenticated %}
-                <div class="d-flex align-items-center">
-                    <span class="navbar-text me-2">Hello, {{ user.username }}</span>
-                    <form method="post" action="{% url 'user_app:logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-light">Logout</button>
-                    </form>
-                </div>
-                {% else %}
-                <div class="d-flex">
-                    <a class="btn btn-outline-light me-3" href="{% url 'user_app:user_login' %}">Login</a>
-                    <a class="btn btn-outline-light" href="{% url 'user_app:registration' %}">Register</a>
-                </div>
-                {% endif %}
+        <div class="d-flex ms-auto align-items-center">
+            {% if user.is_authenticated %}
+                <span class="navbar-text me-2">Hello, {{ user.username }}</span>
+                <form method="post" action="{% url 'user_app:logout' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light">Logout</button>
+                </form>
+            {% else %}
 
-            </ul>
+                <span class="navbar-text me-3">
+                   <form method="post" action="{% url 'user_app:login' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light">Login</button>
+                </form>
+                </span>
+
+                <form method="post" action="{% url 'user_app:registration' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light">Register</button>
+                </form>
+
+
+
+            {% endif %}
         </div>
     </div>
 </nav>
