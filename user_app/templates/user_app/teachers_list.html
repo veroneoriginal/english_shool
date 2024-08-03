@@ -40,7 +40,9 @@ Teachers
         {% endfor %}
     </div>
     <p>
+        {% if user.is_authenticated %}
         <a class="btn btn-success" href="{% url 'user_app:teachers_create' %}">Become a teacher</a>
+        {% endif %}
     </p>
 </div>
 {% endblock %}
