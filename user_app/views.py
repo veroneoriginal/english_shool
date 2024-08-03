@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     ListView,
     CreateView,
@@ -45,10 +46,15 @@ class TeachersDetailView(DetailView):
     context_object_name = 'users'
 
 
-class TeachersCreateView(CreateView):
+class TeachersCreateView(LoginRequiredMixin, CreateView):
     """Представление страницы для внесения нового преподавателя"""
 
     model = User
     form_class = TeachersForm
     template_name = 'user_app/teachers_form.html'
     success_url = reverse_lazy('user_app:teachers_list')
+
+    # Дополнительно можно указать URL для перенаправления, если пользователь не авторизован
+    login_url = '/login/'  # URL на страницу входа
+    redirect_field_name = 'next'  # Параметр для перенаправления после успешного входа
+

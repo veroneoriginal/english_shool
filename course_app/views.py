@@ -1,4 +1,5 @@
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     ListView,
     DetailView,
@@ -28,12 +29,16 @@ class CoursesDetailView(DetailView):
     context_object_name = 'course'
 
 
-class CoursesCreateView(CreateView):
+class CoursesCreateView(LoginRequiredMixin, CreateView):
     """Представление страницы для создания нового курса"""
 
     model = Course
     form_class = CourseForm
     success_url = reverse_lazy('course_app:courses_list')
+
+    # Дополнительно можно указать URL для перенаправления, если пользователь не авторизован
+    login_url = '/login/'  # URL на страницу входа
+    redirect_field_name = 'next'  # Параметр для перенаправления после успешного входа
 
 
 class CoursesUpdateView(UpdateView):
