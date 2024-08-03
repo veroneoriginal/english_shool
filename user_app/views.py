@@ -1,11 +1,24 @@
 from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
 from django.views.generic import (
     ListView,
     CreateView,
     DetailView
 )
 from user_app.models import User, Role
-from user_app.forms import TeachersForm
+from user_app.forms import TeachersForm, RegistrationForm
+
+
+class RegisterView(CreateView):
+    """Представление страницы для регистрации нового пользователя"""
+    model = User
+    template_name = 'user_app/registration.html'
+    form_class = RegistrationForm
+    success_url = reverse_lazy('user_app:user_login')
+
+
+class AuthView(LoginView):
+    template_name = 'user_app/user_login.html'
 
 
 class TeachersListView(ListView):

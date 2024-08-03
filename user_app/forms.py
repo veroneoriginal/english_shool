@@ -1,8 +1,15 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 
 from user_app.models import User, Role
+
+
+class RegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'phone_number', 'password1', 'password2')
 
 
 class TeachersForm(forms.ModelForm):
