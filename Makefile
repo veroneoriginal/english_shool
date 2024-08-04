@@ -43,7 +43,7 @@ wait_for_db:
 start:
 	python manage.py runserver
 
-runtest:
+test_user_app:
 	python manage.py test user_app
 
 coverage:

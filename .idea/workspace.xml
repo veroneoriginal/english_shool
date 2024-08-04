@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cf195036-ede6-4ebd-81c9-15072835c720" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_app/test/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/test/test_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_app/test/test_registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/test/test_registration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "git-widget-placeholder": "testing__code",
-    "last_opened_file_path": "/home/veroneoriginal/Рабочий стол/otus/11_django_study/lesson_11_zoo",
+    "last_opened_file_path": "/home/veroneoriginal/Рабочий стол/otus/10_flask/project_exotic_birds",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -125,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1722703286377</updated>
       <workItem from="1722703287868" duration="6756000" />
-      <workItem from="1722769688258" duration="15306000" />
+      <workItem from="1722769688258" duration="17145000" />
     </task>
     <servers />
   </component>

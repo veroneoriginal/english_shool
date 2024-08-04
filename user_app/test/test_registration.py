@@ -10,12 +10,13 @@ class TestRegistrationView(TestCase):
      """
 
     def test_registration_get(self):
-        """ Метод для проверки статус-кода 200 страницы регистрации """
+        """ Проверка статус-кода 200 страницы регистрации """
+
         self.response = self.client.get('/registration/')
         self.assertEqual(self.response.status_code, 200)
 
     def test_page_reg_form(self):
-        """ Метод для проверки наличия формы для регистрации пользователя на странице регистрации """
+        """ Проверка наличия формы для регистрации пользователя на странице регистрации """
 
         self.response = self.client.get('/registration/')
         context = self.response.context
@@ -27,7 +28,7 @@ class TestRegistrationView(TestCase):
         self.assertEqual(type(form), RegistrationForm)
 
     def test_registration_post(self):
-        """Метод для проверки статус-кода ответа, который возвращается
+        """Проверка статус-кода ответа, который возвращается
         при попытке отправки POST-запроса на URL /registration/
         с определенными данными для регистрации пользователя. """
 
@@ -42,7 +43,7 @@ class TestRegistrationView(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_user_created_check(self):
-        """Метод для проверки создания пользователя"""
+        """Проверка создания пользователя"""
 
         user_data = {
             'username': 'new_user',
@@ -54,7 +55,8 @@ class TestRegistrationView(TestCase):
         self.assertTrue(User.objects.filter(username='new_user').exists())
 
     def test_redirect_url(self):
-        """Метод для проверки, что после входа осуществляется переадесация"""
+        """Проверка, что после входа осуществляется переадесация"""
+
         user_data = {
             'username': 'new_user',
             'email': 'test@test.ru',
@@ -65,7 +67,7 @@ class TestRegistrationView(TestCase):
         self.assertRedirects(response, '/login/')
 
     def test_access_to_page_creating_new_course(self):
-        """ Метод для проверки наличия разрешения на просмотр страницы
+        """ Проверка наличия разрешения на просмотр страницы
         создания нового курса у авторизованного пользователя"""
 
         # Проверяем статус-код страницы создания нового курса
