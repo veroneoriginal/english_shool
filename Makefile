@@ -8,9 +8,6 @@ run:
 newapp:
 	python manage.py startapp user_app
 
-runtest:
-	python manage.py test user_app.test.test_models
-
 makemigrations:
 	python manage.py makemigrations
 
@@ -46,3 +43,10 @@ wait_for_db:
 start:
 	python manage.py runserver
 
+test_user_app:
+	python manage.py test user_app
+
+coverage:
+	coverage run --source='.' manage.py test
+	coverage report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*' --fail-under=100
+	coverage html -d coverage_html_report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*'

@@ -136,5 +136,5 @@ AUTH_USER_MODEL = 'user_app.User'
 INTERNAL_IPS = ["127.0.0.1", ]
 
 LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/users/login/'
-LOGOUT_REDIRECT_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/login/'

@@ -10,7 +10,7 @@ from user_app.models import User, Role
 from user_app.forms import TeachersForm, RegistrationForm
 
 
-class RegisterView(CreateView):
+class RegistrationView(CreateView):
     """Представление страницы для регистрации нового пользователя"""
     model = User
     template_name = 'user_app/registration.html'
@@ -19,6 +19,7 @@ class RegisterView(CreateView):
 
 
 class AuthView(LoginView):
+    """Представление страницы для входа зарегистрированного пользователя"""
     template_name = 'user_app/login.html'
 
 
@@ -57,4 +58,3 @@ class TeachersCreateView(LoginRequiredMixin, CreateView):
     # Дополнительно можно указать URL для перенаправления, если пользователь не авторизован
     login_url = '/login/'  # URL на страницу входа
     redirect_field_name = 'next'  # Параметр для перенаправления после успешного входа
-
