@@ -1,12 +1,10 @@
 from django.test import TestCase
 
 
-class LoginTestCase(TestCase):
-    """ Класс, отвечающий за авторизацию пользователя """
+class TestAuthView(TestCase):
+    """ Тест класса авторизации пользователей """
 
     def test_login_get(self):
-        self.response = self.client.get('/users/login/')
-        # проверяем - отвечает ли страница - статус 200
+        """ Метод для проверки ответа страницы статус 200 """
+        self.response = self.client.get('/login/')
         self.assertEqual(self.response.status_code, 200)
-
-

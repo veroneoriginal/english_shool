@@ -44,7 +44,7 @@ start:
 	python manage.py runserver
 
 runtest:
-	python manage.py test user_app.test
+	python manage.py test user_app
 
 coverage:
 	coverage run --source='.' manage.py test
