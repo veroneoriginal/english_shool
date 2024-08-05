@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:${{ matrix.postgres-version }}
         env:
-          POSTGRES_DB: language_school
-          POSTGRES_USER: veroneoriginal
-          POSTGRES_PASSWORD: vv123
+          POSTGRES_DB: test_school
+          POSTGRES_USER: testverone
+          POSTGRES_PASSWORD: testing123
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -37,7 +37,6 @@ jobs:
       - name: Install dependencies
         run: |
           cp .env_test .env
-          python -c "from python-dotenv import load_dotenv; load_dotenv('.env')"
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
