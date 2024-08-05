@@ -55,7 +55,8 @@ class TeachersForm(forms.ModelForm):
 
     # Этот метод является конструктором класса формы и вызывается при создании экземпляра формы
     def __init__(self, *args, **kwargs):
-        """Переопределяю метод для того, чтобы избежать доступа к бд в момент определения класса формы"""
+        """Переопределяю метод для избежания доступа к бд в момент определения класса формы"""
+
         super().__init__(*args, **kwargs)
         # получает объект поля формы 'role'
         self.fields['role'].initial = Role.objects.get(name=Role.TEACHER)
@@ -75,8 +76,10 @@ class TeachersForm(forms.ModelForm):
         return phone_number
 
     def save(self, commit=True):
-        # Вызов родительского метода save с параметром commit=False создает объект User, но не сохраняет его в базе данных.
-        # Это позволяет нам выполнить дополнительные действия с объектом перед его сохранением.
+        # Вызов родительского метода save с параметром commit=False
+        # создает объект User, но не сохраняет его в бд.
+        # Это позволяет выполнить дополнительные действия с объектом перед его сохранением.
+
         user = super().save()
         teacher_role = Role.objects.get(name=Role.TEACHER)
         user.role.add(teacher_role)

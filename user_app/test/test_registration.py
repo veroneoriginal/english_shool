@@ -76,9 +76,9 @@ class TestRegistrationView(TestCase):
         self.assertEqual(response.status_code, 302)
 
         # Создаем пользователя
-        user = User.objects.create_user(username='tomas_shelbi',
-                                        email='tomi@test.ru',
-                                        password='Tom_She_MSK')
+        User.objects.create_user(username='tomas_shelbi',
+                                 email='tomi@test.ru',
+                                 password='Tom_She_MSK')
 
         # Пользователь авторизуется
         self.client.login(email='tomi@test.ru', password='Tom_She_MSK')

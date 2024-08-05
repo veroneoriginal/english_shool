@@ -2,8 +2,8 @@ from django.views.generic import (
     TemplateView,
     FormView
 )
-from .forms import ContactForm
 from django.urls import reverse_lazy
+from main_app.forms import ContactForm
 
 
 class IndexView(TemplateView):

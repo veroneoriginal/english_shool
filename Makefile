@@ -50,3 +50,6 @@ coverage:
 	coverage run --source='.' manage.py test
 	coverage report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*' --fail-under=100
 	coverage html -d coverage_html_report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*'
+
+lint:
+	pylint $(shell git ls-files '*.py')

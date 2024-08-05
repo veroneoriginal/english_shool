@@ -1,19 +1,25 @@
+import random
+from datetime import date, timedelta
 from django.core.management.base import BaseCommand
 from course_app.models import Course
-from datetime import date, timedelta
-import random
 
 
 class Command(BaseCommand):
     help = 'Create courses'
 
     def handle(self, *args, **options):
-
         print('Удаляю все курсы ...')
         Course.objects.all().delete()
 
         print('Создаю курсы ...')
-        course_names = ['Русский', 'Английский', 'Французский', 'Испанский', 'Португальский', 'Китайский']
+        course_names = [
+            'Русский',
+            'Английский',
+            'Французский',
+            'Испанский',
+            'Португальский',
+            'Китайский'
+        ]
         random.shuffle(course_names)  # Перемешивание списка курсов для случайного порядка
 
         for course_name in course_names:

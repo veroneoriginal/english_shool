@@ -1,3 +1,4 @@
+# pylint: disable=R1725 super-with-arguments
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from user_app.errors import CreateRoleExeption
@@ -22,7 +23,7 @@ class Role(models.Model):
         super(Role, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 
 class User(AbstractUser):

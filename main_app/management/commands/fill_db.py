@@ -19,14 +19,14 @@ class Command(BaseCommand):
         Role.objects.all().delete()
 
         print('Create roles ...')
-        role_registration = Role.objects.create(name=Role.REGISTRATION)
+        # role_registration = Role.objects.create(name=Role.REGISTRATION)
         role_student = Role.objects.create(name=Role.STUDENT)
         role_teacher = Role.objects.create(name=Role.TEACHER)
 
         possible_roles = [role_student, role_teacher]
 
         print('Create users ... ')
-        for people in range(count_people_for_db):
+        for _ in range(count_people_for_db):
             username = fake.user_name()
             email = fake.email()
             phone_number = fake.phone_number()[0:11]
@@ -44,4 +44,5 @@ class Command(BaseCommand):
 
             user.save()
 
-        self.stdout.write(self.style.SUCCESS('База данных успешно заполнена пользователями и ролями'))
+        self.stdout.write(self.style.
+                          SUCCESS('База данных успешно заполнена пользователями и ролями'))

@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cf195036-ede6-4ebd-81c9-15072835c720" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/management/commands/fill_courses.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/management/commands/fill_courses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/management/commands/fill_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/management/commands/fill_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_app/test/test_registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_app/test/test_registration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,23 +44,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Django tests.Test: user_app.test.test_registration.TestRegistrationView.test_page_reg_form.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "testing__code",
-    "last_opened_file_path": "/home/veroneoriginal/Рабочий стол/otus/10_flask/project_exotic_birds",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Django tests.Test: user_app.test.test_registration.TestRegistrationView.test_page_reg_form.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/veroneoriginal/Рабочий стол/otus/english_school&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Django tests.Test: user_app.test.test_registration.TestRegistrationView.test_page_reg_form">
     <configuration name="Test: user_app.test.test_registration.TestRegistrationView.test_page_reg_form" type="DjangoTestsConfigurationType" temporary="true">
       <module name="english_school" />
@@ -121,6 +131,9 @@
       <updated>1722703286377</updated>
       <workItem from="1722703287868" duration="6756000" />
       <workItem from="1722769688258" duration="17145000" />
+      <workItem from="1722863833346" duration="65000" />
+      <workItem from="1722865746933" duration="397000" />
+      <workItem from="1722866148095" duration="1417000" />
     </task>
     <servers />
   </component>
