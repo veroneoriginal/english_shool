@@ -13,10 +13,7 @@ jobs:
     services:
       postgres:
         image: postgres:${{ matrix.postgres-version }}
-        env:
-          POSTGRES_DB: language_school
-          POSTGRES_USER: veroneoriginal
-          POSTGRES_PASSWORD: vv123
+        env: .env_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
