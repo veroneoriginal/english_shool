@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: |
           cp .env_test .env
-          python -c "from dotenv import load_dotenv; load_dotenv('.env')"
+          python -c "from python-dotenv import load_dotenv; load_dotenv('.env')"
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
