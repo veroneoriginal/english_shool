@@ -1,14 +1,14 @@
 name: Run tests
 
-on: [ push ]
+on: [push]
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ 3.11 ]
-        postgres-version: [ 15 ]
+        python-version: [3.11]
+        postgres-version: [15]
 
     services:
       postgres:
