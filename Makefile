@@ -53,3 +53,6 @@ coverage:
 
 lint:
 	pylint $(shell git ls-files '*.py')
+
+go:
+	docker start language_school

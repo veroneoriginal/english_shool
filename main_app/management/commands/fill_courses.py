@@ -1,6 +1,7 @@
 import random
 from datetime import date, timedelta
 from django.core.management.base import BaseCommand
+from faker import Faker
 from course_app.models import Course
 
 
@@ -12,14 +13,20 @@ class Command(BaseCommand):
         Course.objects.all().delete()
 
         print('Создаю курсы ...')
-        course_names = [
-            'Русский',
-            'Английский',
-            'Французский',
-            'Испанский',
-            'Португальский',
-            'Китайский'
-        ]
+        fake = Faker('ru-Ru')
+
+        course_names = []
+        for _ in range(5):
+            course_names.append(fake.job())
+
+        # course_names = [
+        #     'Английский',
+        #     'Французский',
+        #     'Русский',
+        #     'Испанский',
+        #     'Португальский',
+        #     'Китайский'
+        # ]
         random.shuffle(course_names)  # Перемешивание списка курсов для случайного порядка
 
         for course_name in course_names:
