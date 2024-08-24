@@ -40,9 +40,6 @@ wait_for_db:
 	done
 	@echo "PostgreSQL готова к использованию."
 
-start:
-	python manage.py runserver
-
 test_user_app:
 	python manage.py test user_app
 
@@ -56,3 +53,16 @@ lint:
 
 go:
 	docker start language_school
+
+start:
+	python manage.py runserver
+
+worker_go:
+	python manage.py rqworker
+
+up_redis:
+	@docker compose up -d redis
+
+# посмотреть статистику задач в очереди
+look_statistics:
+	python manage.py rqstats --interval=1
