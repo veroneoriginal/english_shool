@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf195036-ede6-4ebd-81c9-15072835c720" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/course_app/job.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main_app/job.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +43,8 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "main",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "create__mail",
     "last_opened_file_path": "/home/veroneoriginal/Рабочий стол/otus/11_django_study/lesson_11_zoo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -142,7 +140,7 @@
       <workItem from="1722881563645" duration="9000" />
       <workItem from="1723405534221" duration="1138000" />
       <workItem from="1723466709688" duration="8000" />
-      <workItem from="1724501619577" duration="2488000" />
+      <workItem from="1724501619577" duration="7145000" />
     </task>
     <servers />
   </component>
