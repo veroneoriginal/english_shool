@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 
-from api.serializer import CourseSerializer
+from api.course.serializer import CourseSerializer
 from course_app.models import Course
 
 
