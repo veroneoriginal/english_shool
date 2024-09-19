@@ -66,3 +66,9 @@ look_statistics:
 
 start:
 	python manage.py runserver
+
+test_course_view:
+	python manage.py test api.course.tests.test_views
+
+test_user_registration_view:
+	python manage.py test api.user.tests.test_user_registration_view

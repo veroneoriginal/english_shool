@@ -27,14 +27,14 @@ class Role(models.Model):
 
 
 class User(AbstractUser):
-    username = models.CharField(unique=False, null=False, max_length=150)
+    username = models.CharField(unique=False, null=True, blank=True, max_length=150)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(unique=True)
     role = models.ManyToManyField(Role, related_name='users')
     password = models.CharField(unique=False, blank=True, null=False, max_length=150)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = []
 
     def save(self, *args, **kwargs):
         self.full_clean()
