@@ -11,4 +11,4 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id','username', 'phone_number', 'email', 'role']
 
     def get_role(self, obj):
-        return obj.role.first().name if obj.role.exists() else None
+        return [role.name for role in obj.role.all()]
