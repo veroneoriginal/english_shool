@@ -54,9 +54,6 @@ lint:
 go:
 	docker start language_school
 
-start:
-	python manage.py runserver
-
 worker_go:
 	python manage.py rqworker
 
@@ -66,3 +63,6 @@ up_redis:
 # посмотреть статистику задач в очереди
 look_statistics:
 	python manage.py rqstats --interval=1
+
+start:
+	python manage.py runserver
