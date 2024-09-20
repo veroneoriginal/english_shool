@@ -22,6 +22,7 @@ class UserRegistrationView(APIView):
             raise ValidationError({"email": "Пользователь с таким email уже существует."})
 
         # Ищем существующую роль "Преподаватель" или создаем, если ее не существует
+        # pylint: disable=W0612 unused-variable
         role, created = Role.objects.get_or_create(name=Role.TEACHER)
 
         # Создаем нового пользователя
