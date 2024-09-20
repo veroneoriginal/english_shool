@@ -13,7 +13,7 @@ class TestCoursesViewSet(APITestCase):
 
     def setUp(self):
         self.user = mixer.blend(User, email='test@test.ru', password='111')
-        for course in range(10):
+        for _ in range(10):
             mixer.blend(Course)
         self.url = '/api/courses/'
 
@@ -25,12 +25,3 @@ class TestCoursesViewSet(APITestCase):
         pprint(response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json()), 10)
-
-
-
-
-
-
-
-
-

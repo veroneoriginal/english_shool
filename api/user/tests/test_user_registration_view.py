@@ -1,8 +1,6 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
-from mixer.backend.django import mixer
 
-from course_app.models import Course
 from user_app.models import User, Role
 
 
@@ -14,7 +12,6 @@ class TestUserRegistrationView(APITestCase):
 
     def setUp(self):
         self.url = '/api/registration/'
-
 
     def test_user_registration_ok(self):
         """ Успешная регистрация """
@@ -51,4 +48,3 @@ class TestUserRegistrationView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         with self.assertRaises(User.DoesNotExist):
             User.objects.get(email=request_data['email'])
-
