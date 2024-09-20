@@ -152,6 +152,5 @@ RQ_QUEUES = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
-    # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
 }

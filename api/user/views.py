@@ -1,4 +1,5 @@
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -16,9 +17,18 @@ class UserRegistrationView(APIView):
         email = serializer.validated_data.get('email')
         password = serializer.validated_data.get('password')
 
-        role = Role.objects.create(name=Role.TEACHER)
+        # Проверка на существующего пользователя
+        if User.objects.filter(email=email).exists():
+            raise ValidationError({"email": "Пользователь с таким email уже существует."})
 
-        user = User.objects.create(email=email, password=password)
+        # Ищем существующую роль "Преподаватель" или создаем, если ее не существует
+        role, created = Role.objects.get_or_create(name=Role.TEACHER)
+
+        # Создаем нового пользователя
+        user = User.objects.create(email=email)
+
+        # Безопасное сохранение пароля
+        user.set_password(password)
         user.role.add(role)
         user.save()
 

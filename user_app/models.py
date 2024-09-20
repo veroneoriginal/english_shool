@@ -32,6 +32,8 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     role = models.ManyToManyField(Role, related_name='users')
     password = models.CharField(unique=False, blank=True, null=False, max_length=150)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
