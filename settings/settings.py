@@ -40,12 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_rq',
+    'django_filters',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    # 'rest_framework.authtoken',
     'course_app',
     'user_app',
     'main_app',
     'debug_toolbar',
+    'api_v1',
+
 ]
 
 MIDDLEWARE = [
@@ -158,10 +162,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
-    ],
+    ),
 }
-
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']

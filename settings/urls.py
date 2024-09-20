@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('course_app.urls')),
     path('', include('user_app.urls')),
     path('__debug__/', include("debug_toolbar.urls")),
-    path('api/', include('api.urls')),
+    path('api/', include('api_v1.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]
