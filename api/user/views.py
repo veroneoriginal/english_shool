@@ -16,7 +16,7 @@ class UserRegistrationView(APIView):
         email = serializer.validated_data.get('email')
         password = serializer.validated_data.get('password')
 
-        role = Role.objects.create(name=Role.REGISTRATION)
+        role = Role.objects.create(name=Role.TEACHER)
 
         user = User.objects.create(email=email, password=password)
         user.role.add(role)
