@@ -3,7 +3,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api_v1.user.serializers import UserRegistrationViewSerializer
+from api.user.serializers import UserRegistrationViewSerializer
 from user_app.models import User, Role
 
 

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 from dotenv import dotenv_values
 
@@ -43,12 +44,11 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework_simplejwt',
-    # 'rest_framework.authtoken',
     'course_app',
     'user_app',
     'main_app',
     'debug_toolbar',
-    'api_v1',
+    'api',
 
 ]
 
@@ -158,13 +158,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.AllowAny',
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticated',
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+SIMPLE_JWT = {
+    # Сколько времени действует access-токен
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    # Время жизни refresh-токена
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
