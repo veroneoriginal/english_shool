@@ -17,8 +17,8 @@ class TestUserRegistrationView(APITestCase):
         """ Успешная регистрация """
 
         request_data = {
-            'email': 'test@test.ru',
-            'password': '222222',
+            "email": "test_1@example.ru",
+            "password": "222222",
         }
         response = self.client.post(self.url, data=request_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -68,3 +68,27 @@ class TestUserRegistrationView(APITestCase):
 
         # Количество пользователей должно оставаться равным 1
         self.assertEqual(User.objects.count(), 1)
+
+
+    # def test_user_registration_returns_tokens(self):
+    #     """ Успешная регистрация возвращает access и refresh токены """
+    #
+    #     request_data = {
+    #         'email': 'user_user_example@test.ru',
+    #         'password': '222fgdf434222',
+    #     }
+    #     response = self.client.post(self.url, data=request_data, format='json')
+    #
+    #     # Проверка успешного статуса
+    #     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    #
+    #     print(response.data)
+    #
+    #     # Проверка, что токены присутствуют в ответе
+    #     self.assertEqual(response.data['tokens'], True)
+    #     # self.assertIn('access', response.data['tokens'])
+    #     # self.assertIn('refresh', response.data['tokens'])
+    #
+    #     # # Убедимся, что access и refresh токены не пусты
+    #     # self.assertTrue(response.data['tokens']['access'])
+    #     # self.assertTrue(response.data['tokens']['refresh'])

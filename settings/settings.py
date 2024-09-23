@@ -173,3 +173,10 @@ SIMPLE_JWT = {
     # Время жизни refresh-токена
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+AUTHENTICATION_BACKENDS = [
+    # Наш кастомный бэкенд
+    'user_app.backends.EmailBackend',
+    # Стандартный бэкенд для username
+    'django.contrib.auth.backends.ModelBackend',
+]
