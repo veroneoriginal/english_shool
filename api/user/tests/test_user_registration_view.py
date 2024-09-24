@@ -70,25 +70,29 @@ class TestUserRegistrationView(APITestCase):
         self.assertEqual(User.objects.count(), 1)
 
 
-    # def test_user_registration_returns_tokens(self):
-    #     """ Успешная регистрация возвращает access и refresh токены """
-    #
-    #     request_data = {
-    #         'email': 'user_user_example@test.ru',
-    #         'password': '222fgdf434222',
-    #     }
-    #     response = self.client.post(self.url, data=request_data, format='json')
-    #
-    #     # Проверка успешного статуса
-    #     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-    #
-    #     print(response.data)
-    #
-    #     # Проверка, что токены присутствуют в ответе
-    #     self.assertEqual(response.data['tokens'], True)
-    #     # self.assertIn('access', response.data['tokens'])
-    #     # self.assertIn('refresh', response.data['tokens'])
-    #
-    #     # # Убедимся, что access и refresh токены не пусты
-    #     # self.assertTrue(response.data['tokens']['access'])
-    #     # self.assertTrue(response.data['tokens']['refresh'])
+    def test_user_registration_returns_tokens(self):
+        """ Успешная регистрация возвращает access и refresh токены """
+
+        request_data = {
+            'email': 'user_user_example@test.ru',
+            'password': '222fgdf434222',
+        }
+        response = self.client.post(self.url, data=request_data, format='json')
+
+        # Проверка успешного статуса
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        # print('response.data', response.data)
+
+        # Проверка, что токены присутствуют в ответе
+        self.assertIn('access_token', response.data)
+        self.assertIn('refresh_token', response.data)
+
+        # Убедимся, что access и refresh токены не пусты
+        access_token = response.data['access_token']
+        refresh_token = response.data['refresh_token']
+
+        self.assertIsNotNone(access_token)
+        self.assertIsNotNone(refresh_token)
+        self.assertNotEqual(access_token, '')
+        self.assertNotEqual(refresh_token, '')
