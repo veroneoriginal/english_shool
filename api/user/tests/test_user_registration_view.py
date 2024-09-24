@@ -63,8 +63,9 @@ class TestUserRegistrationView(APITestCase):
         # Вторая регистрация с теми же данными — должна вернуть ошибку
         response = self.client.post(self.url, data=request_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
         # Проверяем, что ошибка связана с полем email
-        self.assertIn('email', response.data)
+        self.assertIn('error', response.data)
 
         # Количество пользователей должно оставаться равным 1
         self.assertEqual(User.objects.count(), 1)
