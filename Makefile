@@ -40,9 +40,6 @@ wait_for_db:
 	done
 	@echo "PostgreSQL готова к использованию."
 
-test_user_app:
-	python manage.py test user_app
-
 coverage:
 	coverage run --source='.' manage.py test
 	coverage report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*' --fail-under=50
@@ -64,11 +61,19 @@ up_redis:
 look_statistics:
 	python manage.py rqstats --interval=1
 
-start:
-	python manage.py runserver
+test_user_app:
+	python manage.py test user_app
 
 test_course_view:
 	python manage.py test api.course.tests.test_views
 
 test_user_registration_view:
 	python manage.py test api.user.tests.test_user_registration_view
+
+test_all:
+	python manage.py test user_app
+	python manage.py test api.course.tests.test_views
+	python manage.py test api.user.tests.test_user_registration_view
+
+start:
+	python manage.py runserver
