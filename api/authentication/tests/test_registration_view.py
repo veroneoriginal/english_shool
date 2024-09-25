@@ -85,8 +85,6 @@ class TestUserRegistrationView(APITestCase):
         # Проверка успешного статуса
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        # print('response.data', response.data)
-
         # Проверка, что токены присутствуют в ответе
         self.assertIn('access_token', response.data)
         self.assertIn('refresh_token', response.data)
