@@ -58,9 +58,6 @@ class TestCoursesViewSet(APITestCase):
         # Проверяем, добавлена ли роль "Преподаватель" пользователю
         self.assertIn(teacher_role, teacher.role.all())
 
-        # Проверяем, что у пользователя есть роль "Преподаватель"
-        self.assertTrue(teacher.role.filter(name=Role.TEACHER).exists())
-
         # Аутентифицируем пользователя и добавляем токен в заголовок
         self.client.force_authenticate(user=teacher)
 

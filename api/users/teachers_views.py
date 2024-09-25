@@ -4,7 +4,7 @@ from rest_framework.permissions import (
     IsAdminUser
 )
 from user_app.models import User
-from api.teachers.serializer import UserSerializer
+from api.users.serializer import UserSerializer
 
 
 class TeacherViewSet(ModelViewSet):

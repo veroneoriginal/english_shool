@@ -4,9 +4,9 @@ from django.urls import (
 )
 from rest_framework.routers import DefaultRouter
 from api.course.courses_views import CoursesViewSet
-from api.teachers.teachers_views import TeacherViewSet
-from api.user.registration_views import UserRegistrationView
-from api.user.login_views import UserLoginView
+from api.users.teachers_views import TeacherViewSet
+from api.authentication.registration_views import UserRegistrationView
+from api.authentication.login_views import UserLoginView
 
 
 app_name = 'api'

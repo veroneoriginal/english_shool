@@ -68,20 +68,20 @@ test_course_view:
 	python manage.py test api.course.tests.test_courses_views
 
 test_teachers_view:
-	python manage.py test api.teachers.tests.test_teachers_views
+	python manage.py test api.users.tests.test_teachers_views
 
-test_user_registration_view:
-	python manage.py test api.user.tests.test_user_registration_view
+test_registration_view:
+	python manage.py test api.authentication.tests.test_registration_view
 
-test_user_login_view:
-	python manage.py test api.user.tests.test_user_login_view
+test_login_view:
+	python manage.py test api.authentication.tests.test_login_view
 
 test_all:
 	python manage.py test user_app
 	python manage.py test api.course.tests.test_courses_views
-	python manage.py test api.user.tests.test_user_registration_view
-	python manage.py test api.user.tests.test_user_login_view
-	python manage.py test api.teachers.tests.test_teachers_views
+	python manage.py test api.users.tests.test_teachers_views
+	python manage.py test api.authentication.tests.test_registration_view
+	python manage.py test api.authentication.tests.test_login_view
 
 start:
 	python manage.py runserver

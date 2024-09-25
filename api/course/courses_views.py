@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from api.course.serializer import CourseSerializer
-from api.user.permission_teacher_view import IsTeacher
+from api.authentication.permissions import IsTeacher
 from course_app.models import Course
 
 
