@@ -55,9 +55,14 @@ class TestCoursesViewSet(APITestCase):
         # Добавляем роль "Преподаватель" пользователю
         teacher.role.add(teacher_role)
 
+        # Проверяем, добавлена ли роль "Преподаватель" пользователю
+        self.assertIn(teacher_role, teacher.role.all())
+
+        # Проверяем, что у пользователя есть роль "Преподаватель"
+        self.assertTrue(teacher.role.filter(name=Role.TEACHER).exists())
+
         # Аутентифицируем пользователя и добавляем токен в заголовок
-        refresh = RefreshToken.for_user(teacher)
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+        self.client.force_authenticate(user=self.user)
 
         # Данные для создания нового курса
         data = {
