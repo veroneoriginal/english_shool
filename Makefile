@@ -42,7 +42,7 @@ wait_for_db:
 
 coverage:
 	coverage run --source='.' manage.py test
-	coverage report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*' --fail-under=50
+	coverage report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*' --fail-under=80
 	coverage html -d coverage_html_report --omit='settings/asgi.py, settings/wsgi.py, manage.py, mainapp/management/*'
 
 lint:

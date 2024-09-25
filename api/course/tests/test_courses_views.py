@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from mixer.backend.django import mixer
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from user_app.models import User, Role
 from course_app.models import Course
@@ -39,6 +40,7 @@ class TestCoursesViewSet(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json()), 10)
 
+
     def test_authenticated_user_can_create_a_new_course(self):
         """ Аутентифицированный пользователь c ролью "преподаватель" может создать новый курс """
 
@@ -61,7 +63,7 @@ class TestCoursesViewSet(APITestCase):
         self.assertTrue(teacher.role.filter(name=Role.TEACHER).exists())
 
         # Аутентифицируем пользователя и добавляем токен в заголовок
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=teacher)
 
         # Данные для создания нового курса
         data = {
