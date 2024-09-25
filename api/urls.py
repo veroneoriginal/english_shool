@@ -3,8 +3,8 @@ from django.urls import (
     include,
 )
 from rest_framework.routers import DefaultRouter
-from api.course.views import CoursesViewSet
-from api.teachers.views import TeacherViewSet
+from api.course.courses_views import CoursesViewSet
+from api.teachers.teachers_views import TeacherViewSet
 from api.user.registration_views import UserRegistrationView
 from api.user.login_views import UserLoginView
 
