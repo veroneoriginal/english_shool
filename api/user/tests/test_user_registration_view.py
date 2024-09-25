@@ -1,7 +1,10 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from user_app.models import User, Role
+from user_app.models import (
+    User,
+    Role,
+)
 
 
 class TestUserRegistrationView(APITestCase):
@@ -23,7 +26,7 @@ class TestUserRegistrationView(APITestCase):
         response = self.client.post(self.url, data=request_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 1)
-        User.objects.get(email=request_data['email'], role__name=Role.TEACHER)
+        User.objects.get(email=request_data['email'], role__name=Role.REGISTRATION)
 
     def test_validation_error(self):
         """ Плохой email """
@@ -69,7 +72,6 @@ class TestUserRegistrationView(APITestCase):
 
         # Количество пользователей должно оставаться равным 1
         self.assertEqual(User.objects.count(), 1)
-
 
     def test_user_registration_returns_tokens(self):
         """ Успешная регистрация возвращает access и refresh токены """
