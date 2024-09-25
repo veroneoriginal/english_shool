@@ -41,10 +41,10 @@ class TestUserRegistrationView(APITestCase):
         response = self.client.post(self.url, data=data, format='json')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertIn('error', response.data)
-        self.assertEqual(response.data['error'], 'Неверный пароль.')
+        self.assertEqual(response.data['error'], 'Неверные логин или пароль.')
 
     def test_user_login_non_existent_email(self):
-        """ Аутентификация с несуществующим email должна вернуть 400 """
+        """ Аутентификация с несуществующим email должна вернуть 401 """
 
         data = {
             'email': 'nonexistent@example.com',
@@ -53,8 +53,7 @@ class TestUserRegistrationView(APITestCase):
         response = self.client.post(self.url, data=data, format='json')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertIn('error', response.data)
-        print(response.data)
-        self.assertEqual(response.data['error'], 'Пользователь с таким email не найден.')
+        self.assertEqual(response.data['error'], 'Неверные логин или пароль.')
 
     def test_user_login_missing_email(self):
         """ Запрос без email должен вернуть ошибку 400 """
@@ -81,3 +80,13 @@ class TestUserRegistrationView(APITestCase):
         # Проверка, что в ответе есть ошибка по полю 'password'
         self.assertIn('password', response.data)
         self.assertEqual(response.data['password'][0], 'Обязательное поле.')
+
+
+    def test_is_there_user_in_database(self):
+        """ Проверяем появился ли созданный пользователь в базе данных"""
+
+        # Проверяем, существует ли пользователь с данным email в базе
+        user_in_db = User.objects.filter(email='testuser@example.com').exists()
+
+        # Проверяем, что пользователь действительно был создан и находится в базе данных
+        self.assertTrue(user_in_db, "Пользователь не был найден в базе данных.")

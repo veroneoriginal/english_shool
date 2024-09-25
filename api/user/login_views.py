@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from api.user.serializers import UserLoginViewSerializer
-from user_app.models import User
 
 
 class UserLoginView(APIView):
@@ -19,13 +18,6 @@ class UserLoginView(APIView):
 
         email = serializer.validated_data.get('email')
         password = serializer.validated_data.get('password')
-
-        # Проверка, существует ли пользователь с указанным email
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            return Response({'error': 'Пользователь с таким email не найден.'},
-                            status=status.HTTP_401_UNAUTHORIZED)
 
         # Аутентификация пользователя с проверкой пароля
         user = authenticate(request, username=email, password=password)
@@ -41,5 +33,6 @@ class UserLoginView(APIView):
                 'refresh_token': refresh_token
             }, status=status.HTTP_200_OK)
 
-        return Response({'error': 'Неверный пароль.'},
+        # В случае неправильного email или пароля
+        return Response({'error': 'Неверные логин или пароль.'},
                         status=status.HTTP_401_UNAUTHORIZED)
