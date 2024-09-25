@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from api.user.serializers import UserLoginViewSerializer
+from api.user.serializers import UserRegistrationLoginSerializer
 
 
 class UserLoginView(APIView):
@@ -13,7 +13,7 @@ class UserLoginView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-        serializer = UserLoginViewSerializer(data=request.data)
+        serializer = UserRegistrationLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         email = serializer.validated_data.get('email')

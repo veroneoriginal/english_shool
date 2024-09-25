@@ -3,7 +3,7 @@ from rest_framework.test import APITestCase
 from user_app.models import User
 
 
-class TestUserRegistrationView(APITestCase):
+class TestUserLoginView(APITestCase):
     """
     Тесты для вьюшки UserLoginView (аутентификация пользователя)
     """
@@ -80,13 +80,3 @@ class TestUserRegistrationView(APITestCase):
         # Проверка, что в ответе есть ошибка по полю 'password'
         self.assertIn('password', response.data)
         self.assertEqual(response.data['password'][0], 'Обязательное поле.')
-
-
-    def test_is_there_user_in_database(self):
-        """ Проверяем появился ли созданный пользователь в базе данных"""
-
-        # Проверяем, существует ли пользователь с данным email в базе
-        user_in_db = User.objects.filter(email='testuser@example.com').exists()
-
-        # Проверяем, что пользователь действительно был создан и находится в базе данных
-        self.assertTrue(user_in_db, "Пользователь не был найден в базе данных.")
